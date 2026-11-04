@@ -16,6 +16,13 @@
     --accent-soft:rgba(185,169,230,.35);
     --glow:rgba(185,169,230,.18);
   }
+
+  .glow-card p,
+  .chain-card p:not(.chain-empty){
+    text-align:justify;
+    text-indent:2.5em;
+    hyphens:auto;
+  }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
     background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 55%,var(--bg) 100%);
@@ -26,7 +33,6 @@
     min-height:100vh;
   }
 
-  /* ===== ФОНОВАЯ КАРТИНКА ===== */
   .bg-image{
     position:fixed;inset:0;z-index:-2;
     background:url('bg.jpg') center/cover no-repeat;
