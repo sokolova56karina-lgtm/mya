@@ -26,7 +26,6 @@
     min-height:100vh;
   }
 
-  /* ===== ФОНОВАЯ КАРТИНКА ===== */
   .bg-image{
     position:fixed;inset:0;z-index:-2;
     background:url('bg.jpg') center/cover no-repeat;
@@ -233,7 +232,6 @@
     margin-bottom:6px;
   }
 
-  /* --- кастомный плеер --- */
   .player{
     display:flex;align-items:center;gap:16px;
     margin-top:12px;
@@ -374,7 +372,6 @@
     <button class="tab-btn" data-tab="arts">Арты</button>
     <button class="tab-btn" data-tab="music">Музыка</button>
     <button class="tab-btn" data-tab="facts">Факты</button>
-    <button class="tab-btn" data-tab="birth">О рождении</button>
   </nav>
 </div>
 
@@ -542,10 +539,7 @@
       <p>Спит у самой воды — говорит, что так «слышит сны».</p>
       <p>Пугает котят историями о духе омутов. Говорят, сам их выдумал. Или нет.</p>
     </div>
-  </section>
 
-  <section class="tab-panel" id="birth">
-    <h2>О рождении</h2>
     <div class="glow-card">
       <span class="birth-badge">Родился 24 февраля 142 года · 18:23</span>
       <p class="zodiac"><b>Знак зодиака — Рыбы.</b></p>
@@ -574,7 +568,6 @@
 </footer>
 
 <script>
-  // ===== Вкладки =====
   const btns=document.querySelectorAll('.tab-btn');
   const panels=document.querySelectorAll('.tab-panel');
   btns.forEach(b=>b.addEventListener('click',()=>{
@@ -587,7 +580,6 @@
     document.querySelectorAll('.track-card').forEach(c=>c.classList.remove('playing'));
   }));
 
-  // ===== Кастомные плееры =====
   function fmt(s){
     if(!isFinite(s))return'0:00';
     const m=Math.floor(s/60), sec=Math.floor(s%60);
@@ -648,4 +640,3 @@
 
 </body>
 </html>
-
