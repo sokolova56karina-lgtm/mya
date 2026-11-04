@@ -30,7 +30,7 @@
   .bg-image{
     position:fixed;inset:0;z-index:-2;
     background:url('bg.jpg') center/cover no-repeat;
-    /* пока картинки нет — просто фон; положишь images/bg.jpg и она появится */
+    background-attachment:fixed;
   }
   .bg-overlay{
     position:fixed;inset:0;z-index:-1;
@@ -48,6 +48,21 @@
     from{transform:translate(0,0) scale(1)}
     to{transform:translate(40px,-30px) scale(1.06)}
   }
+
+  /* ===== Тёмные полосы сверху и снизу ===== */
+  .bar{
+    position:fixed;left:0;right:0;height:14px;z-index:10;
+    background:linear-gradient(180deg,#0a0b10,#14151d);
+    box-shadow:0 0 14px rgba(0,0,0,.6);
+  }
+  .bar::after{
+    content:"";position:absolute;left:0;right:0;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent-soft),transparent);
+  }
+  .bar.top{top:0}
+  .bar.top::after{bottom:0}
+  .bar.bottom{bottom:0}
+  .bar.bottom::after{top:0}
 
   .wrap{max-width:900px;margin:0 auto;padding:0 24px}
 
@@ -83,6 +98,26 @@
   .quote{
     max-width:560px;margin:44px auto 0;color:var(--muted);
     font-style:italic;font-size:1.2rem;
+  }
+
+  /* ===== Декоративные разделители ===== */
+  .divider{
+    display:flex;align-items:center;justify-content:center;
+    gap:16px;margin:34px auto;max-width:900px;padding:0 24px;
+    opacity:0;animation:rise .8s ease forwards;
+  }
+  .divider .line{
+    flex:1;height:1px;
+    background:linear-gradient(90deg,transparent,var(--accent-soft));
+  }
+  .divider .line:last-child{
+    background:linear-gradient(90deg,var(--accent-soft),transparent);
+  }
+  .divider .gem{
+    width:7px;height:7px;transform:rotate(45deg);
+    background:var(--accent);
+    box-shadow:0 0 12px var(--glow),0 0 22px var(--glow);
+    border-radius:1px;
   }
 
   /* Вкладки */
@@ -180,6 +215,10 @@
 <div class="bg-overlay"></div>
 <div class="bg-glow"></div>
 
+<!-- Тёмные полосы-рамка сверху и снизу -->
+<div class="bar top"></div>
+<div class="bar bottom"></div>
+
 <header class="wrap">
   <div class="kicker reveal">Речное племя</div>
   <h1 class="reveal d1">Слабовидящий</h1>
@@ -191,6 +230,8 @@
   </div>
   <p class="quote reveal d4">«Река не нуждается в глазах, чтобы знать своё русло»</p>
 </header>
+
+<div class="divider reveal d4"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
 
 <div class="wrap">
   <nav class="tabs reveal d5">
@@ -248,7 +289,7 @@
         <figcaption>Человеческий облик</figcaption>
       </figure>
       <figure class="art">
-        <div class="ph">место для арта №3<br>images/03.png</div>
+        <div class="ph">место для арта №3<br>03.png</div>
         <figcaption>Подпись</figcaption>
       </figure>
     </div>
@@ -287,6 +328,8 @@
   </section>
 
 </main>
+
+<div class="divider reveal d5"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
 
 <footer>
   <div class="wrap">Речное племя · Слабовидящий</div>
