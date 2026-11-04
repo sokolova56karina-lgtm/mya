@@ -4,181 +4,205 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Слабовидящий — Речное племя</title>
-<link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Cormorant:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ruslan+Display&family=Cormorant:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #0b0d14;
-    --bg2: #10131f;
-    --card: rgba(148, 150, 255, 0.04);
-    --line: rgba(170, 175, 235, 0.25);
-    --text: #d7d9ee;
-    --muted: #8a8fb0;
-    --accent: #aeb6ff;
-    --accent-glow: rgba(174, 182, 255, 0.35);
+  :root {
+    --bg: #0d1117;
+    --bg2: #131a24;
+    --accent: #9aa8ff;
+    --accent-soft: rgba(154, 168, 255, 0.35);
+    --accent-glow: rgba(154, 168, 255, 0.18);
+    --text: #d6dce8;
+    --muted: #8a93a8;
+    --card: #161d29;
+    --border: rgba(154, 168, 255, 0.25);
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: linear-gradient(180deg, #0a0e15 0%, var(--bg) 40%, var(--bg2) 100%);
     color: var(--text);
-    font-family: 'Cormorant', serif;
-    font-size: 1.25rem;
+    font-family: 'Cormorant', Georgia, serif;
+    font-size: 19px;
     line-height: 1.7;
     min-height: 100vh;
   }
-  .wrap{max-width: 900px; margin: 0 auto; padding: 0 24px 80px;}
+  .container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
 
-  header{padding: 72px 0 40px; text-align: left; position: relative;}
-  .kicker{
-    font-family: monospace;
-    font-size: 0.8rem;
+  header { padding: 90px 0 50px; text-align: center; }
+  .kicker {
+    font-family: 'Cormorant', Georgia, serif;
     letter-spacing: 0.35em;
-    color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 18px;
-  }
-  h1{
-    font-family: 'Ruslan Display', serif;
-    font-weight: 400;
-    font-size: clamp(2.4rem, 7vw, 4.2rem);
-    letter-spacing: 0.06em;
-    color: var(--text);
-    text-shadow: 0 0 24px var(--accent-glow);
-  }
-  .sub{
-    color: var(--muted);
-    font-style: italic;
-    margin-top: 8px;
-    font-size: 1.1rem;
-  }
-  .badges{margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px;}
-  .badge{
-    font-size: 0.9rem;
-    padding: 6px 18px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
     color: var(--accent);
-    background: var(--card);
-  }
-
-  section{margin-top: 64px;}
-  h2{
-    font-family: 'Ruslan Display', serif;
-    font-weight: 400;
-    font-size: 1.7rem;
-    letter-spacing: 0.08em;
-    color: var(--accent);
-    text-shadow: 0 0 18px var(--accent-glow);
+    font-size: 14px;
     margin-bottom: 22px;
   }
-  .card{
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    box-shadow: 0 0 22px rgba(174,182,255,0.08), inset 0 0 40px rgba(174,182,255,0.03);
-    padding: 28px 32px;
-    margin-bottom: 18px;
+  h1 {
+    font-family: 'Ruslan Display', serif;
+    font-size: clamp(40px, 8vw, 76px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: #eef1fa;
+    text-shadow: 0 0 30px var(--accent-glow), 0 0 60px rgba(154,168,255,0.10);
   }
-  .card p{margin-bottom: 12px;}
-  .card p:last-child{margin-bottom: 0;}
-
-  table.stats{width: 100%; border-collapse: collapse;}
-  table.stats td{padding: 9px 4px; border-bottom: 1px solid rgba(170,175,235,0.12); vertical-align: top;}
-  table.stats td:first-child{color: var(--muted); width: 38%; font-style: italic;}
-  table.stats tr:last-child td{border-bottom: none;}
-
-  .hint{color: var(--muted); font-style: italic;}
-
-  .gallery{display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;}
-  .ph{
-    aspect-ratio: 1;
-    border: 1px dashed var(--line);
-    border-radius: 12px;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--muted); font-style: italic; font-size: 1rem;
-    text-align: center; padding: 16px;
-  }
-  .gallery img{width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; border: 1px solid var(--line);}
-
-  footer{
-    margin-top: 80px; padding-top: 24px;
-    border-top: 1px solid var(--line);
-    color: var(--muted); font-size: 0.95rem; font-style: italic;
-  }
-  .quote{
-    text-align: center;
+  .role {
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 20px;
     font-style: italic;
-    color: var(--accent);
-    font-size: 1.35rem;
-    padding: 40px 20px 0;
-    text-shadow: 0 0 16px var(--accent-glow);
   }
+  .badges { margin-top: 26px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .badge {
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 6px 18px;
+    font-size: 15px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    background: rgba(154, 168, 255, 0.06);
+  }
+
+  section { padding: 55px 0; }
+  h2 {
+    font-family: 'Ruslan Display', serif;
+    font-weight: 400;
+    font-size: 34px;
+    letter-spacing: 0.04em;
+    color: #e8ebf6;
+    margin-bottom: 26px;
+    text-align: center;
+  }
+  .divider {
+    width: 70px; height: 2px; margin: 0 auto 40px;
+    background: var(--accent-soft);
+    box-shadow: 0 0 12px var(--accent-glow);
+    border-radius: 2px;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 34px 38px;
+    box-shadow: 0 0 40px var(--accent-glow), inset 0 0 30px rgba(154,168,255,0.03);
+  }
+
+  .char-sheet { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 34px; }
+  .char-sheet div { border-bottom: 1px solid rgba(154,168,255,0.12); padding: 10px 0; }
+  .char-sheet dt, .char-sheet .k { color: var(--accent); font-size: 15px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .char-sheet dd, .char-sheet .v { color: var(--text); }
+
+  .story p { margin-bottom: 20px; }
+  .story p:last-child { margin-bottom: 0; }
+  .quote {
+    text-align: center; font-style: italic; font-size: 22px; color: #c7cfe6;
+    padding: 8px 0 4px;
+  }
+  .placeholder { color: var(--muted); font-style: italic; }
+
+  .facts ul { list-style: none; }
+  .facts li { padding: 10px 0 10px 30px; position: relative; }
+  .facts li::before {
+    content: '❋'; position: absolute; left: 0; top: 10px; color: var(--accent);
+  }
+
+  .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .gallery .ph {
+    border: 1px dashed var(--border); border-radius: 16px; min-height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-style: italic; background: rgba(154,168,255,0.03);
+  }
+  .gallery img {
+    width: 100%; height: 100%; object-fit: cover; border-radius: 16px;
+    border: 1px solid var(--border); box-shadow: 0 0 30px var(--accent-glow);
+  }
+  .credit { text-align: center; color: var(--muted); font-size: 15px; margin-top: 16px; font-style: italic; }
+
+  footer { text-align: center; padding: 40px 0 60px; color: var(--muted); font-size: 15px; letter-spacing: 0.08em; }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <header>
-    <div class="kicker">Речное племя &middot; Тайны туманных заводей</div>
-    <h1>СЛАБОВИДЯЩИЙ</h1>
-    <p class="sub">«Река не нуждается в глазах, чтобы знать своё русло»</p>
+<header>
+  <div class="container">
+    <div class="kicker">Речное племя</div>
+    <h1>Слабовидящий</h1>
+    <div class="role">Воитель речного племени</div>
     <div class="badges">
       <span class="badge">Слепорождённый</span>
       <span class="badge">Воитель</span>
       <span class="badge">Речное племя</span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <section>
+<section>
+  <div class="container">
+    <h2>Цитата</h2>
+    <div class="divider"></div>
+    <p class="quote">«Река не нуждается в глазах, чтобы знать своё русло».</p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
     <h2>Карточка персонажа</h2>
+    <div class="divider"></div>
     <div class="card">
-      <table class="stats">
-        <tr><td>Имя</td><td>Слабовидящий</td></tr>
-        <tr><td>Роль</td><td>Воитель Речного племени</td></tr>
-        <tr><td>Зрение</td><td>Слеп от рождения</td></tr>
-        <tr><td>Внешность</td><td>Белый пушистый кот с дымчатыми отметинами; один глаз мутно-белый, второй — синий</td></tr>
-        <tr><td class="hint">Наставник</td><td class="hint">впишите имя</td></tr>
-        <tr><td class="hint">Возраст</td><td class="hint">впишите</td></tr>
-      </table>
+      <dl class="char-sheet">
+        <div><dt>Имя</dt><dd>Слабовидящий</dd></div>
+        <div><dt>Племя</dt><dd>Речное</dd></div>
+        <div><dt>Роль</dt><dd>Воитель</dd></div>
+        <div><dt>Особенность</dt><dd>Слепорождённый; один глаз мутно-белый, второй — синий</dd></div>
+        <div><dt>Окрас</dt><dd>Белый, дымчатые отметины</dd></div>
+        <div><dt>Зрение</dt><dd>Читает мир звуком, ветром и течением</dd></div>
+      </dl>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section>
+  <div class="container">
     <h2>История</h2>
-    <div class="card">
-      <p>О нём перешёптывались ещё до того, как он открыл глаза, — точнее, до того, как стало ясно, что глаз этих не будет. Слепорождённый котёнок в племени воителей: одни говорили «не выживет», другие — «не должен». Предводительница слушала молча и не выгнала никого, кроме страхов.</p>
-      <p>Имя ему дали — Слабовидящий. Не как жалость: как метку. Он носит её так спокойно, будто это лучшее имя из всех возможных, потому что оно не про то, чего он лишён, а про то, как он видит.</p>
-      <p>Ведь он видит — иначе. Реку он читает по звуку: отличает мель от омута по шелесту воды, знает берег по ветру в камышах, узнаёт гостя по шагам на гальке раньше, чем тот успевает себя выдать. Первым это понял его наставник — <span class="hint">имя наставника</span> — и стал учить его не зрением, а течением.</p>
-      <p>Сначала о нём шептались из-за слепоты. Потом шёпот сменился: теперь в племени говорят, что река что-то шепчет ему в ответ. <span class="hint">Здесь можно оставить тайну недосказанной или вписать главное событие его жизни.</span></p>
+    <div class="divider"></div>
+    <div class="card story">
+      <p>Племя перешёптывалось о слепорождённом котёнке — но предводительница отказалась его выгонять. Имя «Слабовидящий» звучало не как жалость, а как метка. Он носит его так, будто это лучшее имя из всех возможных.</p>
+      <p>Он не видит реки — он её слышит. Мель и омут различает по шелесту воды, берег — по ветру в камышах, гостя — по звуку лап на гальке. Наставник <span class="placeholder">(имя наставника)</span> первым понял, что учить его надо не зрением, а течением.</p>
+      <p>Сначала племя шепталось о его слепоте. Потом — о том, что река что-то шепчет ему в ответ. <span class="placeholder">(главное событие его жизни — заполнить позже)</span></p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
-    <h2>Факты</h2>
+<section class="facts">
+  <div class="container">
+    <h2>Интересные факты</h2>
+    <div class="divider"></div>
     <div class="card">
-      <table class="stats">
-        <tr><td>Не любит</td><td>Когда за него жалются</td></tr>
-        <tr><td>Любит</td><td>Ночь у воды — самое «громкое» время для слуха</td></tr>
-        <tr><td class="hint">Странная привычка</td><td class="hint">впишите</td></tr>
-        <tr><td class="hint">Страх</td><td class="hint">впишите</td></tr>
-      </table>
+      <ul>
+        <li>Спит у самой воды — говорит, что так «слышит сны».</li>
+        <li>Пугает котят историями о духе омутов. Говорят, сам их выдумал. Или нет.</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section>
+<section>
+  <div class="container">
     <h2>Галерея</h2>
+    <div class="divider"></div>
     <div class="gallery">
-      <div class="ph">арт 1 — вставь &lt;img src="images/01.png"&gt;</div>
-      <div class="ph">арт 2 — вставь &lt;img src="images/IMG_7304.png"&gt;</div>
-      <div class="ph">арт 3 — свободное место</div>
+      <div class="ph">арт 1 — заменить на &lt;img src="images/01.png"&gt;</div>
+      <div class="ph">арт 2</div>
+      <div class="ph">арт 3</div>
     </div>
-  </section>
+    <p class="credit">Все права на артовые работы принадлежат их авторам.</p>
+  </div>
+</section>
 
-  <p class="quote">Река не нуждается в глазах, чтобы знать своё русло.</p>
+<footer>
+  <div class="container">Слабовидящий · Речное племя</div>
+</footer>
 
-  <footer>
-    Слабовидящий &middot; Речное племя &middot; Тайны туманных заводей. Арты принадлежат их авторам.
-  </footer>
-
-</div>
 </body>
 </html>
+
