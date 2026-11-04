@@ -74,6 +74,7 @@
   .reveal.d3{animation-delay:.55s}
   .reveal.d4{animation-delay:.75s}
   .reveal.d5{animation-delay:.95s}
+  .reveal.d6{animation-delay:1.15s}
 
   /* Шапка */
   header{padding:72px 0 48px;text-align:center}
@@ -99,6 +100,25 @@
     max-width:560px;margin:44px auto 0;color:var(--muted);
     font-style:italic;font-size:1.2rem;
     font-family:'Triodion',serif;
+  }
+
+  /* ===== Ссылки ===== */
+  .links{
+    display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+    margin:22px 0 0;
+  }
+  .link-btn{
+    display:inline-block;
+    border:1px solid var(--accent-soft);border-radius:999px;
+    padding:8px 24px;font-size:1rem;color:var(--accent);
+    background:rgba(185,169,230,.06);
+    text-decoration:none;
+    transition:.25s;
+  }
+  .link-btn:hover{
+    color:#fff;border-color:var(--accent);
+    background:rgba(185,169,230,.12);
+    box-shadow:0 0 18px var(--glow);
   }
 
   /* ===== Декоративные разделители ===== */
@@ -159,6 +179,46 @@
   .glow-card p{margin-bottom:14px}
   .glow-card p:last-child{margin-bottom:0}
   .placeholder{color:var(--muted);font-style:italic}
+
+  /* ===== Цепь имён ===== */
+  .chain{margin-top:34px}
+  .chain-title{
+    font-family:'Monomakh',serif;font-weight:400;
+    text-align:center;color:#4a5fae;
+    font-size:1.9rem;letter-spacing:.12em;
+    text-shadow:1px 1px 0 rgba(255,255,255,.65), 0 0 18px rgba(185,169,230,.25);
+    margin-bottom:18px;
+  }
+  .chain-card{
+    background:linear-gradient(180deg,#eef6fc,#e2eef9);
+    border:1px solid #5a74c0;
+    outline:1px solid #9db4e0;
+    outline-offset:3px;
+    border-radius:3px;
+    padding:26px 34px;
+    margin-bottom:26px;
+    color:#1c2c66;
+    font-size:1.08rem;
+    line-height:1.7;
+  }
+  .chain-card p{margin-bottom:12px}
+  .chain-card p:last-child{margin-bottom:0}
+  .chain-name{
+    font-family:'Monomakh',serif;font-weight:400;
+    text-align:center;color:#8b1f2a;
+    font-size:1.55rem;letter-spacing:.05em;
+    padding-bottom:4px;
+    border-bottom:1px dotted #8b1f2a;
+    display:table;margin:0 auto 6px;
+  }
+  .chain-role{
+    text-align:center;color:#4a5fae;
+    font-size:1rem;font-style:italic;
+    margin-bottom:16px;
+  }
+  .chain-empty{
+    text-align:center;color:#7a89b8;font-style:italic;
+  }
 
   /* Карточка */
   .info-table{width:100%;border-collapse:collapse}
@@ -231,12 +291,17 @@
     <span class="pill">Речное племя</span>
   </div>
   <p class="quote reveal d4">«Река не нуждается в глазах, чтобы знать своё русло»</p>
+  <div class="links reveal d5">
+    <a class="link-btn" href="https://catwar.su/cat1711256" target="_blank">catwar.su</a>
+    <a class="link-btn" href="https://catwar.net/cat1711256" target="_blank">catwar.net</a>
+    <a class="link-btn" href="https://vk.ru/temi_v" target="_blank">ВКонтакте</a>
+  </div>
 </header>
 
-<div class="divider reveal d4"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
+<div class="divider reveal d5"><span class="line"></span><span class="gem"></span><span class="line"></span></div>
 
 <div class="wrap">
-  <nav class="tabs reveal d5">
+  <nav class="tabs reveal d6">
     <button class="tab-btn active" data-tab="story">История</button>
     <button class="tab-btn" data-tab="card">Карточка</button>
     <button class="tab-btn" data-tab="arts">Арты</button>
@@ -259,6 +324,34 @@
       <span class="placeholder">[имя наставника — того, кто первым понял, что учить его нужно не зрением, а течением]</span></p>
       <p>Сначала племя шепталось о его слепоте. Потом — о том, что река что-то шепчет ему
       в ответ. <span class="placeholder">[главное событие его жизни — когда оно придёт]</span></p>
+    </div>
+
+    <div class="chain">
+      <div class="chain-title">Цепь имён</div>
+
+      <div class="chain-card">
+        <div class="chain-name">Томленьце</div>
+        <div class="chain-role">котёнок</div>
+        <p>Столь хрупкий, столь маленький, столь белый, словно маленький снег. Нет.
+        Похож на белую лилию, что едва распустилась на рассвете солнца. И вот,
+        родился малыш. Столь крошечный и слабый, столь беззащитный и тихий. Он
+        не пискнул. Он лишь вдыхал запахи, незнакомые ароматы, что витали возле
+        подстилки. Материнское тепло согревало, а жесткий язык слизывал с
+        крохотного тельца, остатки своего появления на свет.</p>
+        <p>Этот мир, он такой большой, такой необъятный. И такой страшный…</p>
+      </div>
+
+      <div class="chain-card">
+        <div class="chain-name">Томленький</div>
+        <div class="chain-role">ученик</div>
+        <p class="chain-empty">[история ученичества — замени этот текст, когда напишешь]</p>
+      </div>
+
+      <div class="chain-card">
+        <div class="chain-name">Слабовидящий</div>
+        <div class="chain-role">воитель</div>
+        <p class="chain-empty">[история получения воинского имени]</p>
+      </div>
     </div>
   </section>
 
