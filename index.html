@@ -402,7 +402,6 @@
   </nav>
 </div>
 
-<!-- Индикатор «сейчас играет» — виден с любой вкладки -->
 <div class="now-playing" id="nowPlaying">
   <span class="np-dot"></span>сейчас играет: <span class="np-title" id="npTitle"></span>
 </div>
@@ -600,7 +599,6 @@
 </footer>
 
 <script>
-  // ===== Вкладки =====
   const btns=document.querySelectorAll('.tab-btn');
   const panels=document.querySelectorAll('.tab-panel');
   btns.forEach(b=>b.addEventListener('click',()=>{
@@ -610,7 +608,6 @@
     document.getElementById(b.dataset.tab).classList.add('show');
   }));
 
-  // ===== Индикатор «сейчас играет» =====
   const np=document.getElementById('nowPlaying');
   const npTitle=document.getElementById('npTitle');
   function syncIndicator(){
@@ -624,7 +621,6 @@
     }
   }
 
-  // ===== Кастомные плееры =====
   function fmt(s){
     if(!isFinite(s))return'0:00';
     const m=Math.floor(s/60), sec=Math.floor(s%60);
@@ -657,7 +653,6 @@
 
     btn.addEventListener('click',()=>{
       if(audio.paused){
-        // ставим на паузу все остальные треки
         document.querySelectorAll('audio').forEach(a=>{ if(a!==audio) a.pause(); });
         document.querySelectorAll('.track-card').forEach(c=>{ if(c!==card) c.classList.remove('playing'); });
         audio.play();
@@ -686,16 +681,16 @@
     vol.addEventListener('input',()=>{ audio.volume=parseFloat(vol.value); });
   });
 
-    let audioCtx;
+   let audioCtx;
   function playClick(){
     if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
     const t=audioCtx.currentTime;
     const osc=audioCtx.createOscillator();
     const gain=audioCtx.createGain();
     osc.type='sine';
-    osc.frequency.setValueAtTime(520,t);              // начало звука
-    osc.frequency.exponentialRampToValueAtTime(180,t+.12); // спад — «капля»
-    gain.gain.setValueAtTime(.12,t);                  // тихая громкость
+    osc.frequency.setValueAtTime(520,t);            
+    osc.frequency.exponentialRampToValueAtTime(180,t+.12); 
+    gain.gain.setValueAtTime(.12,t);                  
     gain.gain.exponentialRampToValueAtTime(.0001,t+.15);
     osc.connect(gain).connect(audioCtx.destination);
     osc.start(t);
@@ -708,4 +703,3 @@
 
 </body>
 </html>
-
