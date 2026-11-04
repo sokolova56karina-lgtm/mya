@@ -212,6 +212,11 @@
     border-radius:14px;
     box-shadow:0 0 30px var(--glow), inset 0 0 40px rgba(0,0,0,.35);
     padding:22px 28px;margin-bottom:20px;
+    transition:box-shadow .3s ease, border-color .3s ease;
+  }
+  .track-card.playing{
+    border-color:var(--accent);
+    box-shadow:0 0 40px rgba(185,169,230,.28), inset 0 0 40px rgba(0,0,0,.35);
   }
   .track-num{
     font-family:monospace;font-size:.8rem;letter-spacing:.3em;
@@ -225,12 +230,66 @@
   }
   .track-note{
     color:var(--muted);font-style:italic;font-size:.95rem;
-    margin-bottom:10px;
+    margin-bottom:6px;
   }
-  .track-card audio{
-    width:100%;margin-top:8px;
+
+  /* --- кастомный плеер --- */
+  .player{
+    display:flex;align-items:center;gap:16px;
+    margin-top:12px;
+  }
+  .p-btn{
+    flex:0 0 auto;
+    width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--accent-soft);
+    background:rgba(185,169,230,.08);
+    color:var(--accent);
+    cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:.25s;
+  }
+  .p-btn:hover{
+    color:#fff;border-color:var(--accent);
+    background:rgba(185,169,230,.16);
+    box-shadow:0 0 18px var(--glow);
+  }
+  .p-btn svg{width:18px;height:18px;fill:currentColor}
+  .p-btn .icon-pause{display:none}
+  .track-card.playing .p-btn .icon-pause{display:block}
+  .track-card.playing .p-btn .icon-play{display:none}
+  .track-card.playing .p-btn{
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 0 10px var(--glow)}
+    50%{box-shadow:0 0 24px rgba(185,169,230,.35)}
+  }
+
+  .p-mid{flex:1;min-width:0}
+  .p-bar{
+    height:6px;border-radius:999px;
+    background:rgba(185,169,230,.14);
+    cursor:pointer;
+    position:relative;
+    overflow:hidden;
+  }
+  .p-fill{
+    position:absolute;left:0;top:0;bottom:0;width:0%;
+    background:linear-gradient(90deg,rgba(185,169,230,.45),var(--accent));
     border-radius:999px;
+    box-shadow:0 0 12px var(--glow);
   }
+  .p-times{
+    display:flex;justify-content:space-between;
+    font-family:monospace;font-size:.75rem;letter-spacing:.1em;
+    color:var(--muted);margin-top:6px;
+  }
+  .p-vol{
+    flex:0 0 90px;
+    accent-color:var(--accent);
+    cursor:pointer;
+  }
+  audio{display:none}
 
    .info-table{width:100%;border-collapse:collapse}
   .info-table td{padding:9px 0;vertical-align:top}
@@ -406,30 +465,74 @@
 
     <div class="track-card">
       <div class="track-num">ТРЕК 01</div>
-      <div class="track-title">Три дня дождя, Майвл - Вечная любовь (Трибьют Дениса Майданова)</div>
+      <div class="track-title">Три дня дождя, Майвл — Вечная любовь</div>
       <div class="track-note">Я буду знать, что ты любишь меня</div>
-      <audio controls src="Вечная любовь (Трибьют Дениса Майданова) - Три дня дождя, Майвл.mp3"></audio>
+      <div class="player">
+        <button class="p-btn" aria-label="Играть">
+          <svg class="icon-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 16 16"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>
+        </button>
+        <div class="p-mid">
+          <div class="p-bar"><div class="p-fill"></div></div>
+          <div class="p-times"><span class="p-cur">0:00</span><span class="p-dur">0:00</span></div>
+        </div>
+        <input class="p-vol" type="range" min="0" max="1" step="0.05" value="0.8" title="Громкость">
+        <audio preload="metadata" src="Вечная любовь (Трибьют Дениса Майданова) - Три дня дождя, Майвл.mp3"></audio>
+      </div>
     </div>
 
     <div class="track-card">
       <div class="track-num">ТРЕК 02</div>
-      <div class="track-title">Ради чего - Три дня дождя, тринадцать карат</div>
+      <div class="track-title">Три дня дождя, тринадцать карат — Ради чего</div>
       <div class="track-note">ради чего ради чего ради чего</div>
-      <audio controls src="Ради чего - Три дня дождя, тринадцать карат.mp3"></audio>
+      <div class="player">
+        <button class="p-btn" aria-label="Играть">
+          <svg class="icon-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 16 16"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>
+        </button>
+        <div class="p-mid">
+          <div class="p-bar"><div class="p-fill"></div></div>
+          <div class="p-times"><span class="p-cur">0:00</span><span class="p-dur">0:00</span></div>
+        </div>
+        <input class="p-vol" type="range" min="0" max="1" step="0.05" value="0.8" title="Громкость">
+        <audio preload="metadata" src="Ради чего - Три дня дождя, тринадцать карат.mp3"></audio>
+      </div>
     </div>
 
     <div class="track-card">
       <div class="track-num">ТРЕК 03</div>
       <div class="track-title">будет</div>
       <div class="track-note">будет</div>
-      <audio controls src="music/track3.mp3"></audio>
+      <div class="player">
+        <button class="p-btn" aria-label="Играть">
+          <svg class="icon-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 16 16"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>
+        </button>
+        <div class="p-mid">
+          <div class="p-bar"><div class="p-fill"></div></div>
+          <div class="p-times"><span class="p-cur">0:00</span><span class="p-dur">0:00</span></div>
+        </div>
+        <input class="p-vol" type="range" min="0" max="1" step="0.05" value="0.8" title="Громкость">
+        <audio preload="metadata" src="music/track3.mp3"></audio>
+      </div>
     </div>
 
     <div class="track-card">
       <div class="track-num">ТРЕК 04</div>
       <div class="track-title">будет</div>
       <div class="track-note">будет</div>
-      <audio controls src="music/track4.mp3"></audio>
+      <div class="player">
+        <button class="p-btn" aria-label="Играть">
+          <svg class="icon-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+          <svg class="icon-pause" viewBox="0 0 16 16"><path d="M3 2h4v12H3zM9 2h4v12H9z"/></svg>
+        </button>
+        <div class="p-mid">
+          <div class="p-bar"><div class="p-fill"></div></div>
+          <div class="p-times"><span class="p-cur">0:00</span><span class="p-dur">0:00</span></div>
+        </div>
+        <input class="p-vol" type="range" min="0" max="1" step="0.05" value="0.8" title="Громкость">
+        <audio preload="metadata" src="music/track4.mp3"></audio>
+      </div>
     </div>
   </section>
 
@@ -471,6 +574,7 @@
 </footer>
 
 <script>
+  // ===== Вкладки =====
   const btns=document.querySelectorAll('.tab-btn');
   const panels=document.querySelectorAll('.tab-panel');
   btns.forEach(b=>b.addEventListener('click',()=>{
@@ -478,8 +582,70 @@
     panels.forEach(p=>p.classList.remove('show'));
     b.classList.add('active');
     document.getElementById(b.dataset.tab).classList.add('show');
+    // при переключении вкладки ставим всю музыку на паузу
+    document.querySelectorAll('audio').forEach(a=>{a.pause();});
+    document.querySelectorAll('.track-card').forEach(c=>c.classList.remove('playing'));
   }));
+
+  // ===== Кастомные плееры =====
+  function fmt(s){
+    if(!isFinite(s))return'0:00';
+    const m=Math.floor(s/60), sec=Math.floor(s%60);
+    return m+':'+String(sec).padStart(2,'0');
+  }
+
+  document.querySelectorAll('.player').forEach(p=>{
+    const audio=p.querySelector('audio');
+    const card=p.closest('.track-card');
+    const btn=p.querySelector('.p-btn');
+    const bar=p.querySelector('.p-bar');
+    const fill=p.querySelector('.p-fill');
+    const cur=p.querySelector('.p-cur');
+    const dur=p.querySelector('.p-dur');
+    const vol=p.querySelector('.p-vol');
+
+    audio.volume=parseFloat(vol.value);
+
+    audio.addEventListener('loadedmetadata',()=>{ dur.textContent=fmt(audio.duration); });
+
+    audio.addEventListener('timeupdate',()=>{
+      if(audio.duration){
+        fill.style.width=(audio.currentTime/audio.duration*100)+'%';
+      }
+      cur.textContent=fmt(audio.currentTime);
+    });
+
+    btn.addEventListener('click',()=>{
+      if(audio.paused){
+        // ставим на паузу все остальные треки
+        document.querySelectorAll('audio').forEach(a=>{ if(a!==audio) a.pause(); });
+        document.querySelectorAll('.track-card').forEach(c=>{ if(c!==card) c.classList.remove('playing'); });
+        audio.play();
+        card.classList.add('playing');
+      }else{
+        audio.pause();
+        card.classList.remove('playing');
+      }
+    });
+
+    audio.addEventListener('ended',()=>{
+      card.classList.remove('playing');
+      fill.style.width='0%';
+      audio.currentTime=0;
+      cur.textContent='0:00';
+    });
+
+    bar.addEventListener('click',e=>{
+      if(!audio.duration)return;
+      const r=bar.getBoundingClientRect();
+      const x=Math.min(Math.max(e.clientX-r.left,0),r.width);
+      audio.currentTime=x/r.width*audio.duration;
+    });
+
+    vol.addEventListener('input',()=>{ audio.volume=parseFloat(vol.value); });
+  });
 </script>
 
 </body>
 </html>
+
