@@ -23,8 +23,42 @@
     font-family:'Cormorant',serif;
     font-size:1.15rem;
     line-height:1.65;
+    min-height:100vh;
   }
+
+  /* ===== ФОНОВАЯ КАРТИНКА ===== */
+  .bg-image{
+    position:fixed;inset:0;z-index:-2;
+    background:url('images/bg.jpg') center/cover no-repeat;
+    /* пока картинки нет — просто фон; положишь images/bg.jpg и она появится */
+  }
+  .bg-overlay{
+    position:fixed;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(13,14,19,.82) 0%,rgba(13,14,19,.72) 50%,rgba(13,14,19,.88) 100%);
+  }
+  /* мягкое свечение, плывущее по фону */
+  .bg-glow{
+    position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(600px 400px at 20% 15%, rgba(185,169,230,.10), transparent 70%),
+      radial-gradient(700px 500px at 85% 80%, rgba(185,169,230,.08), transparent 70%);
+    animation:drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift{
+    from{transform:translate(0,0) scale(1)}
+    to{transform:translate(40px,-30px) scale(1.06)}
+  }
+
   .wrap{max-width:900px;margin:0 auto;padding:0 24px}
+
+  /* ===== Эффекты появления при загрузке ===== */
+  .reveal{opacity:0;transform:translateY(18px);animation:rise .8s ease forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .reveal.d1{animation-delay:.15s}
+  .reveal.d2{animation-delay:.35s}
+  .reveal.d3{animation-delay:.55s}
+  .reveal.d4{animation-delay:.75s}
+  .reveal.d5{animation-delay:.95s}
 
   /* Шапка */
   header{padding:72px 0 48px;text-align:center}
@@ -50,7 +84,6 @@
     max-width:560px;margin:44px auto 0;color:var(--muted);
     font-style:italic;font-size:1.2rem;
   }
-  .quote::before,.quote::after{color:var(--accent)}
 
   /* Вкладки */
   nav.tabs{
@@ -72,16 +105,16 @@
 
   /* Секции */
   main{padding-bottom:60px}
-  .tab-panel{display:none;animation:fade .4s ease}
+  .tab-panel{display:none;animation:fade .5s ease}
   .tab-panel.show{display:block}
-  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
   .tab-panel h2{
     font-family:'Ruslan Display',serif;font-weight:400;
     color:var(--accent);font-size:1.7rem;letter-spacing:.06em;
     margin-bottom:22px;
   }
   .glow-card{
-    background:var(--card);
+    background:rgba(23,24,34,.85);
     border:1px solid var(--accent-soft);
     border-radius:14px;
     box-shadow:0 0 30px var(--glow), inset 0 0 40px rgba(0,0,0,.35);
@@ -102,8 +135,13 @@
   /* Галерея */
   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
   figure.art{
-    background:var(--card);border:1px solid var(--accent-soft);border-radius:14px;
+    background:rgba(23,24,34,.85);border:1px solid var(--accent-soft);border-radius:14px;
     padding:14px;box-shadow:0 0 24px var(--glow);text-align:center;
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  figure.art:hover{
+    transform:translateY(-5px);
+    box-shadow:0 0 40px rgba(185,169,230,.28);
   }
   figure.art img{width:100%;border-radius:8px;display:block}
   figure.art .ph{
@@ -137,20 +175,25 @@
 </head>
 <body>
 
+<!-- Фон: картинка + затемнение + плывущее свечение -->
+<div class="bg-image"></div>
+<div class="bg-overlay"></div>
+<div class="bg-glow"></div>
+
 <header class="wrap">
-  <div class="kicker">Речное племя</div>
-  <h1>Слабовидящий</h1>
-  <div class="subtitle">воитель речного племени</div>
-  <div class="badges">
+  <div class="kicker reveal">Речное племя</div>
+  <h1 class="reveal d1">Слабовидящий</h1>
+  <div class="subtitle reveal d2">воитель речного племени</div>
+  <div class="badges reveal d3">
     <span class="pill">Слепорождённый</span>
     <span class="pill">Воитель</span>
     <span class="pill">Речное племя</span>
   </div>
-  <p class="quote">«Река не нуждается в глазах, чтобы знать своё русло»</p>
+  <p class="quote reveal d4">«Река не нуждается в глазах, чтобы знать своё русло»</p>
 </header>
 
 <div class="wrap">
-  <nav class="tabs">
+  <nav class="tabs reveal d5">
     <button class="tab-btn active" data-tab="story">История</button>
     <button class="tab-btn" data-tab="card">Карточка</button>
     <button class="tab-btn" data-tab="arts">Арты</button>
@@ -260,8 +303,6 @@
   }));
 </script>
 
-</body>
-</html>
 </body>
 </html>
 
