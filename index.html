@@ -181,43 +181,37 @@
   .placeholder{color:var(--muted);font-style:italic}
 
   /* ===== Цепь имён ===== */
-  .chain{margin-top:34px}
-  .chain-title{
-    font-family:'Monomakh',serif;font-weight:400;
-    text-align:center;color:#4a5fae;
-    font-size:1.9rem;letter-spacing:.12em;
-    text-shadow:1px 1px 0 rgba(255,255,255,.65), 0 0 18px rgba(185,169,230,.25);
-    margin-bottom:18px;
-  }
   .chain-card{
-    background:linear-gradient(180deg,#eef6fc,#e2eef9);
-    border:1px solid #5a74c0;
-    outline:1px solid #9db4e0;
-    outline-offset:3px;
-    border-radius:3px;
-    padding:26px 34px;
-    margin-bottom:26px;
-    color:#1c2c66;
-    font-size:1.08rem;
+    background:rgba(23,24,34,.85);
+    border:1px solid var(--accent-soft);
+    border-radius:14px;
+    box-shadow:0 0 30px var(--glow), inset 0 0 40px rgba(0,0,0,.35);
+    padding:28px 32px;margin-bottom:26px;
     line-height:1.7;
   }
-  .chain-card p{margin-bottom:12px}
+  .chain-card p{margin-bottom:14px}
   .chain-card p:last-child{margin-bottom:0}
   .chain-name{
     font-family:'Monomakh',serif;font-weight:400;
-    text-align:center;color:#8b1f2a;
+    text-align:center;color:var(--accent);
     font-size:1.55rem;letter-spacing:.05em;
     padding-bottom:4px;
-    border-bottom:1px dotted #8b1f2a;
-    display:table;margin:0 auto 6px;
+    border-bottom:1px dotted var(--accent-soft);
+    display:table;margin:0 auto 8px;
+    text-shadow:0 0 16px var(--glow);
   }
   .chain-role{
-    text-align:center;color:#4a5fae;
+    text-align:center;color:var(--muted);
     font-size:1rem;font-style:italic;
-    margin-bottom:16px;
+    margin-bottom:18px;
   }
   .chain-empty{
-    text-align:center;color:#7a89b8;font-style:italic;
+    text-align:center;color:var(--muted);font-style:italic;
+  }
+  .chain-arrow{
+    text-align:center;color:var(--muted);
+    font-size:1.3rem;margin:-14px 0 18px;
+    letter-spacing:.3em;
   }
 
   /* Карточка */
@@ -303,6 +297,7 @@
 <div class="wrap">
   <nav class="tabs reveal d6">
     <button class="tab-btn active" data-tab="story">История</button>
+    <button class="tab-btn" data-tab="chain">Цепь имён</button>
     <button class="tab-btn" data-tab="card">Карточка</button>
     <button class="tab-btn" data-tab="arts">Арты</button>
     <button class="tab-btn" data-tab="facts">Факты</button>
@@ -325,33 +320,38 @@
       <p>Сначала племя шепталось о его слепоте. Потом — о том, что река что-то шепчет ему
       в ответ. <span class="placeholder">[главное событие его жизни — когда оно придёт]</span></p>
     </div>
+  </section>
 
-    <div class="chain">
-      <div class="chain-title">Цепь имён</div>
+  <!-- ЦЕПЬ ИМЁН -->
+  <section class="tab-panel" id="chain">
+    <h2>Цепь имён</h2>
 
-      <div class="chain-card">
-        <div class="chain-name">Томленьце</div>
-        <div class="chain-role">котёнок</div>
-        <p>Столь хрупкий, столь маленький, столь белый, словно маленький снег. Нет.
-        Похож на белую лилию, что едва распустилась на рассвете солнца. И вот,
-        родился малыш. Столь крошечный и слабый, столь беззащитный и тихий. Он
-        не пискнул. Он лишь вдыхал запахи, незнакомые ароматы, что витали возле
-        подстилки. Материнское тепло согревало, а жесткий язык слизывал с
-        крохотного тельца, остатки своего появления на свет.</p>
-        <p>Этот мир, он такой большой, такой необъятный. И такой страшный…</p>
-      </div>
+    <div class="chain-card">
+      <div class="chain-name">Томленьце</div>
+      <div class="chain-role">котёнок</div>
+      <p>Столь хрупкий, столь маленький, столь белый, словно маленький снег. Нет.
+      Похож на белую лилию, что едва распустилась на рассвете солнца. И вот,
+      родился малыш. Столь крошечный и слабый, столь беззащитный и тихий. Он
+      не пискнул. Он лишь вдыхал запахи, незнакомые ароматы, что витали возле
+      подстилки. Материнское тепло согревало, а жесткий язык слизывал с
+      крохотного тельца, остатки своего появления на свет.</p>
+      <p>Этот мир, он такой большой, такой необъятный. И такой страшный…</p>
+    </div>
 
-      <div class="chain-card">
-        <div class="chain-name">Томленький</div>
-        <div class="chain-role">ученик</div>
-        <p class="chain-empty">[история ученичества — замени этот текст, когда напишешь]</p>
-      </div>
+    <div class="chain-arrow">· · ·</div>
 
-      <div class="chain-card">
-        <div class="chain-name">Слабовидящий</div>
-        <div class="chain-role">воитель</div>
-        <p class="chain-empty">[история получения воинского имени]</p>
-      </div>
+    <div class="chain-card">
+      <div class="chain-name">Томленький</div>
+      <div class="chain-role">ученик</div>
+      <p class="chain-empty">[история ученичества — замени этот текст, когда напишешь]</p>
+    </div>
+
+    <div class="chain-arrow">· · ·</div>
+
+    <div class="chain-card">
+      <div class="chain-name">Слабовидящий</div>
+      <div class="chain-role">воитель</div>
+      <p class="chain-empty">[история получения воинского имени]</p>
     </div>
   </section>
 
