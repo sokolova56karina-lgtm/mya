@@ -12,7 +12,7 @@
     --card:#171822;
     --text:#d8d9e0;
     --muted:#8a8b96;
-    --accent:#b9a9e6;      /* серебристо-сиреневый */
+    --accent:#b9a9e6;      
     --accent-soft:rgba(185,169,230,.35);
     --glow:rgba(185,169,230,.18);
   }
@@ -36,8 +36,7 @@
     position:fixed;inset:0;z-index:-1;
     background:linear-gradient(180deg,rgba(13,14,19,.82) 0%,rgba(13,14,19,.72) 50%,rgba(13,14,19,.88) 100%);
   }
-  /* мягкое свечение, плывущее по фону */
-  .bg-glow{
+    .bg-glow{
     position:fixed;inset:0;z-index:-1;pointer-events:none;
     background:
       radial-gradient(600px 400px at 20% 15%, rgba(185,169,230,.10), transparent 70%),
@@ -49,8 +48,7 @@
     to{transform:translate(40px,-30px) scale(1.06)}
   }
 
-  /* ===== Тёмные полосы сверху и снизу ===== */
-  .bar{
+   .bar{
     position:fixed;left:0;right:0;height:14px;z-index:10;
     background:linear-gradient(180deg,#0a0b10,#14151d);
     box-shadow:0 0 14px rgba(0,0,0,.6);
@@ -66,7 +64,6 @@
 
   .wrap{max-width:900px;margin:0 auto;padding:0 24px}
 
-  /* ===== Эффекты появления при загрузке ===== */
   .reveal{opacity:0;transform:translateY(18px);animation:rise .8s ease forwards}
   @keyframes rise{to{opacity:1;transform:none}}
   .reveal.d1{animation-delay:.15s}
@@ -76,8 +73,7 @@
   .reveal.d5{animation-delay:.95s}
   .reveal.d6{animation-delay:1.15s}
 
-  /* Шапка */
-  header{padding:72px 0 48px;text-align:center}
+   header{padding:72px 0 48px;text-align:center}
   .kicker{
     font-family:monospace;font-size:.8rem;letter-spacing:.45em;
     text-transform:uppercase;color:var(--muted);
@@ -102,8 +98,7 @@
     font-family:'Triodion',serif;
   }
 
-  /* ===== Ссылки ===== */
-  .links{
+    .links{
     display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
     margin:22px 0 0;
   }
@@ -121,7 +116,6 @@
     box-shadow:0 0 18px var(--glow);
   }
 
-  /* ===== Декоративные разделители ===== */
   .divider{
     display:flex;align-items:center;justify-content:center;
     gap:16px;margin:34px auto;max-width:900px;padding:0 24px;
@@ -141,7 +135,6 @@
     border-radius:1px;
   }
 
-  /* Вкладки */
   nav.tabs{
     display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
     padding:10px 0 30px;
@@ -159,7 +152,6 @@
     box-shadow:0 0 18px var(--glow);
   }
 
-  /* Секции */
   main{padding-bottom:60px}
   .tab-panel{display:none;animation:fade .5s ease}
   .tab-panel.show{display:block}
@@ -180,8 +172,7 @@
   .glow-card p:last-child{margin-bottom:0}
   .placeholder{color:var(--muted);font-style:italic}
 
-  /* ===== Цепь имён ===== */
-  .chain-card{
+   .chain-card{
     background:rgba(23,24,34,.85);
     border:1px solid var(--accent-soft);
     border-radius:14px;
@@ -214,16 +205,14 @@
     letter-spacing:.3em;
   }
 
-  /* Карточка */
-  .info-table{width:100%;border-collapse:collapse}
+   .info-table{width:100%;border-collapse:collapse}
   .info-table td{padding:9px 0;vertical-align:top}
   .info-table td:first-child{
     color:var(--muted);width:200px;white-space:nowrap;padding-right:18px;
   }
   .info-table tr+tr td{border-top:1px solid rgba(185,169,230,.1)}
 
-  /* Галерея */
-  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+   .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
   figure.art{
     background:rgba(23,24,34,.85);border:1px solid var(--accent-soft);border-radius:14px;
     padding:14px;box-shadow:0 0 24px var(--glow);text-align:center;
@@ -242,8 +231,7 @@
   figcaption{margin-top:10px;color:var(--muted);font-style:italic;font-size:.95rem}
   .credits{margin-top:16px;color:var(--muted);font-size:.95rem;font-style:italic}
 
-  /* О рождении */
-  .birth-badge{
+    .birth-badge{
     display:inline-block;border:1px solid var(--accent-soft);border-radius:999px;
     padding:8px 22px;color:var(--accent);margin-bottom:20px;
     background:rgba(185,169,230,.06);
@@ -266,12 +254,10 @@
 </head>
 <body>
 
-<!-- Фон: картинка + затемнение + плывущее свечение -->
 <div class="bg-image"></div>
 <div class="bg-overlay"></div>
 <div class="bg-glow"></div>
 
-<!-- Тёмные полосы-рамка сверху и снизу -->
 <div class="bar top"></div>
 <div class="bar bottom"></div>
 
@@ -280,7 +266,7 @@
   <h1 class="reveal d1">Слабовидящий</h1>
   <div class="subtitle reveal d2">воитель речного племени</div>
   <div class="badges reveal d3">
-    <span class="pill">Слепорождённый</span>
+    <span class="pill">Всезнающий</span>
     <span class="pill">Воитель</span>
     <span class="pill">Речное племя</span>
   </div>
@@ -307,7 +293,6 @@
 
 <main class="wrap">
 
-  <!-- ИСТОРИЯ -->
   <section class="tab-panel show" id="story">
     <h2>История</h2>
     <div class="glow-card">
@@ -322,7 +307,6 @@
     </div>
   </section>
 
-  <!-- ЦЕПЬ ИМЁН -->
   <section class="tab-panel" id="chain">
     <h2>Цепь имён</h2>
 
@@ -341,9 +325,9 @@
     <div class="chain-arrow">· · ·</div>
 
     <div class="chain-card">
-      <div class="chain-name">Томленький</div>
+      <div class="chain-name">Слепоглазенький</div>
       <div class="chain-role">ученик</div>
-      <p class="chain-empty">[история ученичества — замени этот текст, когда напишешь]</p>
+      <p class="chain-empty">история</p>
     </div>
 
     <div class="chain-arrow">· · ·</div>
@@ -351,11 +335,10 @@
     <div class="chain-card">
       <div class="chain-name">Слабовидящий</div>
       <div class="chain-role">воитель</div>
-      <p class="chain-empty">[история получения воинского имени]</p>
+      <p class="chain-empty">история</p>
     </div>
   </section>
 
-  <!-- КАРТОЧКА -->
   <section class="tab-panel" id="card">
     <h2>Карточка персонажа</h2>
     <div class="glow-card">
@@ -363,15 +346,14 @@
         <tr><td>Имя</td><td>Слабовидящий</td></tr>
         <tr><td>Племя</td><td>Речное</td></tr>
         <tr><td>Роль</td><td>воитель</td></tr>
-        <tr><td>Особенность</td><td>слепорождённый; один глаз мутно-белый, второй — синий</td></tr>
-        <tr><td>Окрас</td><td>белый, дымчатые отметины</td></tr>
+        <tr><td>Особенность</td><td>слепой; мутные глаза</td></tr>
+        <tr><td>Окрас</td><td>пушистый, белый с дымчатым оттенком</td></tr>
         <tr><td>Зрение</td><td>читает мир звуком, ветром и течением</td></tr>
         <tr><td>Родился</td><td>24 февраля 142 года, 18:23</td></tr>
       </table>
     </div>
   </section>
 
-  <!-- АРТЫ -->
   <section class="tab-panel" id="arts">
     <h2>Арты</h2>
     <div class="gallery">
@@ -391,7 +373,6 @@
     <p class="credits">Художники: <span class="placeholder">merrrsi | maiova</span></p>
   </section>
 
-  <!-- ФАКТЫ -->
   <section class="tab-panel" id="facts">
     <h2>Интересные факты</h2>
     <div class="glow-card">
@@ -400,7 +381,6 @@
     </div>
   </section>
 
-  <!-- О РОЖДЕНИИ -->
   <section class="tab-panel" id="birth">
     <h2>О рождении</h2>
     <div class="glow-card">
