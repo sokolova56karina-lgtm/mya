@@ -26,6 +26,7 @@
     min-height:100vh;
   }
 
+  /* ===== ФОНОВАЯ КАРТИНКА ===== */
   .bg-image{
     position:fixed;inset:0;z-index:-2;
     background:url('bg.jpg') center/cover no-repeat;
@@ -136,7 +137,7 @@
 
   nav.tabs{
     display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
-    padding:10px 0 30px;
+    padding:10px 0 18px;
   }
   .tab-btn{
     cursor:pointer;border:1px solid var(--accent-soft);border-radius:999px;
@@ -149,6 +150,31 @@
     color:#fff;border-color:var(--accent);
     background:rgba(185,169,230,.12);
     box-shadow:0 0 18px var(--glow);
+  }
+
+  /* ===== Индикатор «сейчас играет» ===== */
+  .now-playing{
+    display:none;
+    text-align:center;
+    color:var(--accent);
+    font-size:.95rem;font-style:italic;
+    padding-bottom:6px;
+  }
+  .now-playing.show{display:block}
+  .np-dot{
+    display:inline-block;width:8px;height:8px;border-radius:50%;
+    background:var(--accent);
+    margin-right:10px;
+    box-shadow:0 0 10px var(--glow);
+    vertical-align:middle;
+    animation:np-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes np-pulse{0%,100%{opacity:.35}50%{opacity:1}}
+  .np-title{
+    color:var(--text);
+    font-family:'Monomakh',serif;font-weight:400;
+    font-size:1rem;letter-spacing:.04em;
+    text-shadow:0 0 14px var(--glow);
   }
 
   main{padding-bottom:60px}
@@ -232,6 +258,7 @@
     margin-bottom:6px;
   }
 
+  /* --- кастомный плеер --- */
   .player{
     display:flex;align-items:center;gap:16px;
     margin-top:12px;
@@ -373,6 +400,11 @@
     <button class="tab-btn" data-tab="music">Музыка</button>
     <button class="tab-btn" data-tab="facts">Факты</button>
   </nav>
+</div>
+
+<!-- Индикатор «сейчас играет» — виден с любой вкладки -->
+<div class="now-playing" id="nowPlaying">
+  <span class="np-dot"></span>сейчас играет: <span class="np-title" id="npTitle"></span>
 </div>
 
 <main class="wrap">
@@ -568,6 +600,7 @@
 </footer>
 
 <script>
+  // ===== Вкладки =====
   const btns=document.querySelectorAll('.tab-btn');
   const panels=document.querySelectorAll('.tab-panel');
   btns.forEach(b=>b.addEventListener('click',()=>{
@@ -575,11 +608,23 @@
     panels.forEach(p=>p.classList.remove('show'));
     b.classList.add('active');
     document.getElementById(b.dataset.tab).classList.add('show');
-    // при переключении вкладки ставим всю музыку на паузу
-    document.querySelectorAll('audio').forEach(a=>{a.pause();});
-    document.querySelectorAll('.track-card').forEach(c=>c.classList.remove('playing'));
   }));
 
+  // ===== Индикатор «сейчас играет» =====
+  const np=document.getElementById('nowPlaying');
+  const npTitle=document.getElementById('npTitle');
+  function syncIndicator(){
+    const playing=[...document.querySelectorAll('audio')].find(a=>!a.paused && !a.ended);
+    if(playing){
+      const card=playing.closest('.track-card');
+      npTitle.textContent=card.querySelector('.track-title').textContent;
+      np.classList.add('show');
+    }else{
+      np.classList.remove('show');
+    }
+  }
+
+  // ===== Кастомные плееры =====
   function fmt(s){
     if(!isFinite(s))return'0:00';
     const m=Math.floor(s/60), sec=Math.floor(s%60);
@@ -607,6 +652,9 @@
       cur.textContent=fmt(audio.currentTime);
     });
 
+    audio.addEventListener('play',syncIndicator);
+    audio.addEventListener('pause',syncIndicator);
+
     btn.addEventListener('click',()=>{
       if(audio.paused){
         // ставим на паузу все остальные треки
@@ -625,6 +673,7 @@
       fill.style.width='0%';
       audio.currentTime=0;
       cur.textContent='0:00';
+      syncIndicator();
     });
 
     bar.addEventListener('click',e=>{
@@ -640,3 +689,4 @@
 
 </body>
 </html>
+
